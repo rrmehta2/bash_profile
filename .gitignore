@@ -1,0 +1,4 @@
+# Dont ignore these files
+
+!.gitignore
+!.bash_profile
