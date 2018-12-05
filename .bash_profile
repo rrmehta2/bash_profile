@@ -1,7 +1,10 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local:/usr/local/bin
 GO_PATH=/usr/local/go/bin
+RBENV_PATH=$HOME/.rbenv/shims
 
-export PATH=$PATH:$GO_PATH
+# make sure RBENV_PATH comes before system path
+# to use the right version of Ruby
+export PATH=RBENV_PATH:$PATH:$GO_PATH
 
 # color codes
 txtblk='\e[0;30m' # Black - Regular
@@ -49,6 +52,7 @@ print_before_the_prompt () {
 
 PROMPT_COMMAND=print_before_the_prompt
 PS1='-> '
+#PS1='☁︎ > '
 
 # cd behavior
 alias cd..='cd ..'
@@ -68,3 +72,5 @@ alias display='sfdx force:org:display'
 
 source '/Users/rohit.mehta/Projects/salesforce-cli-bash-completion/sfdx.bash'
 source '/Users/rohit.mehta/Projects/bash-functions/bash-functions.sh'
+export GPG_TTY=$(tty)
+eval "$(rbenv init -)"
